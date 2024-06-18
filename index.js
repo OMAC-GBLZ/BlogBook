@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
   var postsCollection = [];
     
   app.post("/submit", (req, res)=> {
-    var post = new BlogPost(req.body["name"],req.body["title"],req.body["content"],postsCollection.length + 1, new Date())
+    var post = new BlogPost(req.body["name"],req.body["title"],req.body["content"],postsCollection.length + 1, ("Date Written: " + new Date() + " "))
     postsCollection.push(post);
     res.render("index.ejs", {
         createdPosts: postsCollection,
@@ -34,6 +34,7 @@ app.get("/", (req, res) => {
     let index = Number(Number(req.body["postId"]) - 1);
     postsCollection[index].title = req.body["title"];
     postsCollection[index].body = req.body["content"];
+    postsCollection[index].time = (postsCollection[index].time + "------- Updated on: " + new Date())
     console.log(postsCollection[index].user);
     res.render("index.ejs", {
         createdPosts: postsCollection,
