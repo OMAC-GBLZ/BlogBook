@@ -16,12 +16,12 @@
     padding: 5%;
 }
 
-.posts > h2{
+h2{
     font-family: "Playwrite IS", cursive;
     font-optical-sizing: auto; 
     color: #1A2130; 
 }
-.posts > p{
+#main p{
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
     color: #1A2130; 
