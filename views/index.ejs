@@ -4,41 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+IS:wght@100..400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+IS:wght@100..400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
+<section id = "header">
+<div class = container>
+<h1>BlogBook</h1>
+<p>Create, Edit and Delete Blog Posts!</p>
+</div>
+</section>
+<section id = "main">
 <body>
-    <form action = "/submit" method="post">
-        <input name="name" type="text" class="feedback-input" placeholder="Name" />
-        <input name="title" type="text" class="feedback-input" placeholder="Post title" />
-        <textarea name="content" class="feedback-input" placeholder="Write here..."></textarea>
-        <input type="submit" value="Create Post" />
-      </form>
+    <div class = "create-post">
+        <form action = "/submit" method="post">
+            <input name="name" type="text" class="feedback-input form-item" placeholder="Name" />
+            <input name="title" type="text" class="feedback-input form-item" placeholder="Post title" />
+            <textarea name="content" class="feedback-input form-item" size= "100" placeholder="Write here..."></textarea>
+            <input class="create btn" type="submit" value="Create Post" />
+          </form>
+    </div>
+    <div id = "view-posts">
+        <div class = posts>
       <%if (locals.createdPosts){%>
-      
       <%createdPosts.forEach((post) => {%>
         <h2><%= post.title%></h2>
-        <p>By: <%=post.user%> <br>Post ID:<%=post.id%></p>
-        <br>
+        <p>Written by: <%=post.user%></p>
         <p><%=post.body%></p>
         <br>
-        <button>Edit Post</button>
-        <form action = "/update" method="post">
-            <input name="postId" type="text" class="feedback-input" value="<%=post.id%>" readonly/>
-            <input name="name" type="text" class="feedback-input" value="<%=post.user%>" />
-            <input name="title" type="text" class="feedback-input" value="<%=post.title%>" />
-            <textarea name="content" class="feedback-input"><%=post.body%></textarea>
-            <input type="submit" value="Save Changes"/>
+        <p>Date Written: <%=post.time%></p>
+        </div>
+        <div class ="edit">
+        <div id = "edit-view">
+            <h3>Edit your post below</h3>
+            <form action = "/update" method="post">
+                <label for="title">Title</label>
+                <input name="title" type="text" class="feedback-input form-item" value="<%=post.title%>" />
+                <label for="content">Main Content</label>
+                <textarea name="content" class="feedback-input form-item"><%=post.body%></textarea>
+                <input class="btn form-item" type="submit" value="Save Changes"/>
+                <input name="postId" type="text" class="feedback-input hidden" value="<%=post.id%>" readonly/>
+                <input name="name" type="text" class="feedback-input hidden" value="<%=post.user%>" readonly/>
           </form>
-          <br>
-        <form action = "/delete" method="post">
-            <label for="postId">Post ID</label>
-            <input name="postId" type="text" class="feedback-input" value="<%=post.id%>" readonly/>
-            <input type="submit" value="Delete Post" />
+          <form action = "/delete" method="post">
+            <input class="delete btn form-item" type="submit" value="Delete Post" />
+            <input name="postId" type="text" class="feedback-input hidden" value="<%=post.id%>" readonly/>
           </form>
-        <p><%=post.time%></p>
+        </div>
+    </div>
+    </div>
         <hr>
         <br>
       <%});%>
-
       <%}%>
+</section>
 </body>
 </html>

@@ -1,0 +1,87 @@
+#header > div{
+    background-color: #5A72A0;
+    text-align: center;
+    color: white;
+    flex-direction: column;
+    font-family: "Playwrite IS", cursive;
+    font-optical-sizing: auto; 
+}
+#edit-view > form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+#edit-view{
+    padding: 5%;
+}
+
+.posts > h2{
+    font-family: "Playwrite IS", cursive;
+    font-optical-sizing: auto; 
+    color: #1A2130; 
+}
+.posts > p{
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    color: #1A2130; 
+}
+h3{
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    color: #1A2130;  
+}
+body{
+    background-color: whitesmoke;
+}
+.container{
+    display: flex;
+    padding: 1%;
+    justify-content: center;
+}
+.create-post{
+    padding: 1%;
+    
+}
+.create-post > form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    
+}
+.form-item{
+    width: 50%;
+}
+
+.btn{
+    background-color: #5A72A0;
+    color: white;
+    font-family: "Playwrite IS", cursive;
+}
+
+.create-post textarea{
+    resize: vertical;
+    width: 50%;
+    height: 200px;
+}
+
+#edit-view textarea{
+    resize: vertical;
+    width: 50%;
+    height: 200px;
+}
+
+input[type=text] {
+    font-family: "Open Sans", sans-serif;
+}
+
+input[type=submit] {
+    font-family: "Open Sans", sans-serif;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
