@@ -13,10 +13,12 @@ app.get("/", (req, res) => {
   });
   
   var postsCollection = [];
+  var postId = 1;
     
   app.post("/submit", (req, res)=> {
-    var post = new BlogPost(req.body["name"],req.body["title"],req.body["content"],postsCollection.length + 1, ("Date Written: " + new Date() + " "))
+    var post = new BlogPost(req.body["name"],req.body["title"],req.body["content"],postId, ("Date Written: " + new Date() + " "))
     postsCollection.push(post);
+    postId++;
     res.render("index.ejs", {
         createdPosts: postsCollection,
     });
@@ -24,9 +26,14 @@ app.get("/", (req, res) => {
 
   app.post("/delete", (req, res)=> {
     console.log(req.body["postId"] + ": deleted");
-    let index = Number(Number(req.body["postId"]) - 1);
-    console.log(index);
-    postsCollection.splice(index, 1);
+    let deleteId = Number(Number(req.body["postId"]));
+    for (i = 0; i < postsCollection.length; i++){
+        if (postsCollection[i].id === deleteId)
+          {
+            postsCollection.splice(i, 1);
+            console.log(i);
+          }
+    }
     res.render("index.ejs", {
         createdPosts: postsCollection,
     });
