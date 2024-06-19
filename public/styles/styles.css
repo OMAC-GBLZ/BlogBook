@@ -77,7 +77,10 @@ input[type=text] {
     font-family: "Open Sans", sans-serif;
 }
 
-input[type=submit] {
+footer{
+    height: 100px;
+    background-color: #5A72A0;
+    color: whitesmoke;
     font-family: "Open Sans", sans-serif;
 }
 

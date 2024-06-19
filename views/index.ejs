@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+IS:wght@100..400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+IS:wght@100..400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <section id = "header">
 <div class = container>
@@ -28,37 +29,35 @@
     <div id = "view-posts">
         <div class = posts>
       <%if (locals.createdPosts){%>
-      <%createdPosts.forEach((post) => {%>
-        <h2><%= post.title%></h2>
-        <p>Written by: <%=post.user%></p>
-        <p><%=post.body%></p>
+      <%for(i = createdPosts.length -1; i >=0; i--){%>
+        <h2><%= createdPosts[i].title%></h2>
+        <p>Written by: <%=createdPosts[i].user%></p>
+        <p><%=createdPosts[i].body%></p>
         <br>
-        <p><%=post.time%></p>
+        <p><%=createdPosts[i].time%></p>
         </div>
         <div class ="edit">
         <div id = "edit-view">
             <h3>Edit your post below</h3>
             <form action = "/update" method="post">
                 <label for="title">Title</label>
-                <input name="title" type="text" class="feedback-input form-item" value="<%=post.title%>" />
+                <input name="title" type="text" class="feedback-input form-item" value="<%=createdPosts[i].title%>" />
                 <label for="content">Main Content</label>
-                <textarea name="content" class="feedback-input form-item"><%=post.body%></textarea>
+                <textarea name="content" class="feedback-input form-item"><%=createdPosts[i].body%></textarea>
                 <input class="btn form-item" type="submit" value="Save Changes"/>
-                <input name="postId" type="text" class="feedback-input hidden" value="<%=post.id%>" readonly/>
-                <input name="name" type="text" class="feedback-input hidden" value="<%=post.user%>" readonly/>
+                <input name="postId" type="text" class="feedback-input hidden" value="<%=createdPosts[i].id%>" readonly/>
+                <input name="name" type="text" class="feedback-input hidden" value="<%=createdPosts[i].user%>" readonly/>
           </form>
           <form action = "/delete" method="post">
             <input class="delete btn form-item" type="submit" value="Delete Post" />
-            <input name="postId" type="text" class="feedback-input hidden" value="<%=post.id%>" readonly/>
+            <input name="postId" type="text" class="feedback-input hidden" value="<%=createdPosts[i].id%>" readonly/>
           </form>
         </div>
     </div>
     </div>
         <hr>
         <br>
-      <%});%>
       <%}%>
-</section>
-<link rel="stylesheet" href="styles/styles.css">
-</body>
+      <%}%>
+</section>  
 </html>
